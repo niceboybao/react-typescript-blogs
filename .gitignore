@@ -1,0 +1,12 @@
+/node_modules
+.idea
+/nbproject/private/
+.DS_Store
+/platforms
+/npm-debug.log
+/nbproject/project.properties
+/nbproject/project.xml
+/.awcache
+/.cache-loader
+/dll
+/Jenkinsfile
