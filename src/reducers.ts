@@ -4,7 +4,6 @@ import {routerReducer} from 'react-router-redux';
 
 //组件render引入
 import {team1Reducer, name as team1ReducerName} from './containers/Team1/reducer';
-
 import {counterReducer as counterReducerForTeam2, name as counterReducerForTeam2Name} from './containers/Team2/reducer';
 import {httpReducer, name as httpReducerName} from './containers/Team3/reducer';
 import {RN_ROUTER} from './constants';

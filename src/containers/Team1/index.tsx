@@ -139,7 +139,6 @@ export default class Team1 extends React.Component<Team1StateProps & Team1Dispat
 //        console.log("dom改变了刷新");
 //        return true;
         // 短路运算  &&->一false短路,||->一true短路
-        debugger;
         if (this.props.counter !== nextProps.counter || this.state.name !== nextState.name) {
             console.log("dom改变了刷新");
             return true;

@@ -31,7 +31,6 @@ export const team1Reducer = handleActions({
     },
     //初始化计时器
     [INITMENT]: (state, action: Action<number>) => {
-        debugger;
         return Object.assign({}, state, {
             count: action.payload
         });

@@ -10,7 +10,7 @@ import {createBrowserHistory} from 'history';
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux';
 import Es6Promise from 'es6-promise';
 import * as log from 'loglevel';
-import './styles/app.css';
+import './styles/app.scss';
 
 import createReducer from './reducers';
 import {Hello} from './components/Hello/';
