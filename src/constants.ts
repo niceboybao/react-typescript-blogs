@@ -15,6 +15,9 @@ export const RN_TEAM4_HTTP_QUERY = 'team4HttpQuery';
 //team1
 export const RN_TEAM1 = 'team1Reducer';
 
+//HomeContents
+export const RN_HomeContents = 'homeContentsReducer';
+
 
 
 

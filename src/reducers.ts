@@ -6,6 +6,9 @@ import {routerReducer} from 'react-router-redux';
 import {team1Reducer, name as team1ReducerName} from './containers/Team1/reducer';
 import {counterReducer as counterReducerForTeam2, name as counterReducerForTeam2Name} from './containers/Team2/reducer';
 import {httpReducer, name as httpReducerName} from './containers/Team3/reducer';
+// ---------add reducer----------//
+
+import {name as homeContentsReducerName, homeContentsReducer} from './containers/HomeContents/reducer';
 import {RN_ROUTER} from './constants';
 
 // import team4HttpReducer from './containers/Team4/reducer';
@@ -20,11 +23,14 @@ import {RN_ROUTER} from './constants';
 
 export default function createReducer(asyncReducers: any) {
     return combineReducers({
-        [RN_ROUTER]: routerReducer,
+        [RN_ROUTER]: routerReducer,  //???
         [team1ReducerName]: team1Reducer,
         [counterReducerForTeam2Name]: counterReducerForTeam2,
         [httpReducerName]: httpReducer,
         // team4HttpQuery: team4HttpReducer,
-        ...asyncReducers,
+        // ---------add reducer----------//
+        [homeContentsReducerName]: homeContentsReducer,
+
+        ...asyncReducers  //???
     });
 }

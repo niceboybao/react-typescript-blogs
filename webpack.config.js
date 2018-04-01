@@ -9,6 +9,7 @@ var loaderUtils = require("loader-utils");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var CompressionPlugin = require("compression-webpack-plugin");
+
 const {
     CheckerPlugin
 } = require('awesome-typescript-loader');
@@ -69,14 +70,15 @@ var basePlugins = [
     }),
     new HtmlWebpackPlugin({
         template: './src/index.html',
+        title: 'Baldwin\'s Blog', //index title
         minify: isProd ? {
-            removeComments: true,
+            removeComments: true, //删除注释
             collapseBooleanAttributes: true,
             removeRedundantAttributes: true,
             removeEmptyAttributes: true,
             removeScriptTypeAttributes: true,
             collapseWhitespace: true,
-            conservativeCollapse: true,
+            conservativeCollapse: true, //删除空格
             preserveLineBreaks: true
         } : {},
         inject: false
@@ -102,7 +104,7 @@ var devPlugins = [
 var devPluginsForWebpackDevServer = [
     new webpack.HotModuleReplacementPlugin(),
     new OpenBrowserPlugin({
-        url: 'http://localhost:8384/www/',
+        url: 'http://localhost:8080/www/',
         browser: browserName
     }),
     new DashboardPlugin()
@@ -127,24 +129,27 @@ var prodPlugins = [
 
 var prodPluginsForWebpackDevServer = [
     new OpenBrowserPlugin({
-        url: 'http://localhost:8384/www/',
+        url: 'http://localhost:8080/www/',
         browser: browserName
     }),
     new DashboardPlugin()
 ];
 
 var webpackConfig = {
+    // entry
     entry: isProd ? {
         app: ["./src/app.tsx"]
     } : {
         // app: ['webpack-dev-server/client?http://0.0.0.0:8384', 'webpack/hot/only-dev-server', './src/app.tsx']
         app: ["react-hot-loader/patch", "./src/app.tsx"]
     },
+    
+    // output
     output: {
         path: __dirname + "/www",
         publicPath: './',
         filename: isProd ? 'scripts/[name].[hash].bundle.js' : 'scripts/[name].bundle.js',
-        chunkFilename: isProd ? 'scripts/[id].[name].[chunkhash].chunk.js' : 'scripts/[id].[name].chunk.js',
+        chunkFilename: isProd ? 'scripts/[id].[name].[chunkhash].chunk.js' : 'scripts/[id].[name].chunk.js', //chunkhash 带版本号的hash
         sourceMapFilename: '[file].map',
         pathinfo: isProd ? false : true
     },
@@ -335,11 +340,12 @@ var webpackConfig = {
     // dependencies, which allows browsers to cache those libraries between builds.
     // externals: {
     // },
+    //  plugins
     plugins: isProd ? (isDevServer ? basePlugins.concat(prodPlugins).concat(prodPluginsForWebpackDevServer) : basePlugins.concat(prodPlugins)) : (isDevServer ? basePlugins.concat(devPlugins).concat(devPluginsForWebpackDevServer) : basePlugins.concat(devPlugins)),
     devServer: {
         publicPath: "/www/",
         compress: true,
-        port: 8384,
+        port: 8080,
         historyApiFallback: {
             index: "/www/index.html"
         },

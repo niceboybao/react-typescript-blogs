@@ -9,7 +9,9 @@ var loaderUtils = require("loader-utils");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var CompressionPlugin = require("compression-webpack-plugin");
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const {
+    CheckerPlugin
+} = require('awesome-typescript-loader');
 
 /**
  * Env
@@ -42,9 +44,9 @@ var basePlugins = [
 
 var devPlugins = [
     new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false
-        })
+        analyzerMode: 'static',
+        openAnalyzer: false
+    })
 ];
 
 var prodPlugins = [
@@ -136,14 +138,13 @@ var webpackConfig = {
                     'cache-loader',
                     {
                         loader: StringReplacePlugin.replace({
-                                replacements: [
-                                    {
-                                        pattern: /_import\(/ig,
-                                        replacement: function (match, p1, offset, string) {
-                                            return 'import(';
-                                        }
-                                    }
-                                ]})
+                            replacements: [{
+                                pattern: /_import\(/ig,
+                                replacement: function(match, p1, offset, string) {
+                                    return 'import(';
+                                }
+                            }]
+                        })
                     },
                     {
                         loader: 'babel-loader'
@@ -179,15 +180,13 @@ var webpackConfig = {
                 // Pass along the updated reference to your code
                 // You can add here any file extension you want to get copied to your output
                 test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|otf|ttf)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: isProd ? '[path][name].[hash].[ext]' : '[path][name].[ext]'
-                        }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: isProd ? '[path][name].[hash].[ext]' : '[path][name].[ext]'
                     }
-                ]
+                }]
             },
             {
                 // optimize svg load
@@ -203,9 +202,12 @@ var webpackConfig = {
                     }, {
                         loader: 'svgo-loader',
                         options: {
-                            plugins: [
-                                { removeEditorsNSData: true },
-                                { removeUnknownsAndDefaults: true }
+                            plugins: [{
+                                    removeEditorsNSData: true
+                                },
+                                {
+                                    removeUnknownsAndDefaults: true
+                                }
                             ]
                         }
                     }
@@ -226,7 +228,10 @@ var webpackConfig = {
                                 localIdentName: '[path]__[name]__[local]'
                             }
                         },
-                        {loader: 'sass-loader'}],
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ],
                     publicPath: "../"
                 }) : ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -240,7 +245,10 @@ var webpackConfig = {
                                 localIdentName: '[path]__[name]__[local]__[hash:base64:5]'
                             }
                         },
-                        {loader: 'sass-loader'}],
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ],
                     publicPath: "../"
                 })
             },

@@ -4,8 +4,6 @@ Yet another seed project.
 
 ## npm scripts
 
-## npm scripts
-
 ### Build Dll libs
 
 #### Dll libs dev build
@@ -83,5 +81,4 @@ $ npm run clean
 - unit test
 
 ## License
-
-[MIT License][MIT]
+React is [MIT licensed.](https://github.com/facebook/react/blob/master/LICENSE)

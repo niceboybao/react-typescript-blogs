@@ -57,8 +57,8 @@ interface Team1State {
         {
             data: dataSelector(state),
             counter: countSelector(state)
-//            data: state.team1Reducer.getData,
-//            counter: state.team1Reducer.count as number
+            //            data: state.team1Reducer.getData,
+            //            counter: state.team1Reducer.count as number
         }
     ),
     (dispatch: any) => (
@@ -117,6 +117,7 @@ export default class Team1 extends React.Component<Team1StateProps & Team1Dispat
         console.log("Team1 component componentWillMount");
     }
     // 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次
+    // 在这个周期钩子里面处理接口请求
     componentDidMount() {
         console.log("Team1 component componentDidMount");
         document.getElementById('content_display_area').style.height = ((document.getElementsByClassName('ant-layout-content')[0] as HTMLElement).offsetHeight - 42).toString() + "px";
@@ -136,8 +137,8 @@ export default class Team1 extends React.Component<Team1StateProps & Team1Dispat
         //        if(typeof nextProps.data.name === "undefined"){
         //            return false;
         //        }
-//        console.log("dom改变了刷新");
-//        return true;
+        //        console.log("dom改变了刷新");
+        //        return true;
         // 短路运算  &&->一false短路,||->一true短路
         if (this.props.counter !== nextProps.counter || this.state.name !== nextState.name) {
             console.log("dom改变了刷新");
@@ -170,7 +171,10 @@ export default class Team1 extends React.Component<Team1StateProps & Team1Dispat
     changeState() {
         this.setState({
             name: '改变state'
-        });
+        },
+            // 该函数会在setState函数调用完成并且组件开始重渲染的时候被调用，我们可以用该函数来监听渲染是否完成：
+            () => console.log('setState has finished and the component has re-rendered.')
+        );
     }
 
     //初始化table

@@ -1,3 +1,12 @@
+/**
+* @name ReactDOM.render
+* @describe tsx 根目录创建dom
+* @author Baldwin/niceboybao@gmail.com
+* @data 2018-3-30, 14:41:58
+* @version 1.0.0
+* 
+*/
+
 import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,17 +19,17 @@ import {createBrowserHistory} from 'history';
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux';
 import Es6Promise from 'es6-promise';
 import * as log from 'loglevel';
-import './styles/app.scss';
 
 import createReducer from './reducers';
 import {Hello} from './components/Hello/';
-import {RootContainer} from './containers/RootContainer/';
+import {RootContainer} from './containers/';
 import rootSaga from './sagas';
 import {HEMPConfig} from './config';
 
 // Es6Promise.polyfill();
 
-// import antd css
+// import css
+import './styles/pc.css';
 import '!style-loader!css-loader!antd/dist/antd.min.css';
 
 // init hempConfig
@@ -36,18 +45,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     log.setLevel("debug");
 }
-
-// override console.log
-//console.log = (message: any, ...objs: object[]) => {
-//    if (log.getLevel() <= log.levels.DEBUG) {
-//         console.groupCollapsed(message, ...objs);
-//         console.trace('stack trace');
-//         console.groupEnd();
-//     } else {
-//         log.debug(message, ...objs);
-//     }
-// };
-
 
 // Create a history
 let appBase = '/www';
@@ -86,17 +83,3 @@ ReactDOM.render(
     document.getElementById("rootElement")
 );
 
-// ReactDOM.render(
-//         <RootLayout/>,
-//     document.getElementById("rootElement")
-// );
-
-// if (module.hot) {
-//     module.hot.accept('./components/RootLayout.tsx', () => {
-//         const NextRootContainer = require('./components/RootLayout').default;
-//         ReactDOM.render(
-//             <NextRootContainer/>,
-//             document.getElementById("rootElement")
-//         );
-//     });
-// }

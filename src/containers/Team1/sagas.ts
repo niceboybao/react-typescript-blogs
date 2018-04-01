@@ -6,18 +6,6 @@ import {REQUESTDATA} from './constants';
 import {requestDataSuccess, requestDataError, requestDataFaild} from './actions';
 
 function* fetchData(action: Action<any>) {
-    //    const req     = {
-    //        method: 'GE    T',
-    //        credentials: 'includ    e',
-    //        headers    : {
-    //            'Authorization': (window as GlobalDefinitions).authorizati    on,
-    //            'Accept': 'application/json, text/plain, */    *',
-    //            'Content-Type': 'application/jso    n',
-    //            'Cache': 'no-cac    he'
-    //            },
-    //        url: (window as GlobalDefinitions).homeworkBasePath + '/sec/getArticleQuestion?' + strPa    ram
-    //    }
-
     try {
         const response = (yield call(fetch, './mock/test.json')) as Response;
         if (response.ok) {

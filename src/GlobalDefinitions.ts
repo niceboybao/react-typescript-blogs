@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Store } from 'redux';
-import { SagaMiddleware } from 'redux-saga';
-import { HEMPConfig } from './config';
+import {Store} from 'redux';
+import {SagaMiddleware} from 'redux-saga';
+import {HEMPConfig} from './config';
 
 declare global {
     interface Window {
