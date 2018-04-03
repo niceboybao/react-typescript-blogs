@@ -197,6 +197,7 @@ export default class Team1 extends React.Component<Team1StateProps & Team1Dispat
         return columns;
     }
 
+    // 触发视图的重新渲染
     render() {
         //react最重要的步骤，创建虚拟dom，进行diff算法，更新dom树都在此进行。此时就不能更改state了
         const {counter, counterPlusOne, counterMinusOne, data} = this.props;

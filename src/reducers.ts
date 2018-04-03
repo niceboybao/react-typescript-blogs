@@ -8,7 +8,7 @@ import {counterReducer as counterReducerForTeam2, name as counterReducerForTeam2
 import {httpReducer, name as httpReducerName} from './containers/Team3/reducer';
 // ---------add reducer----------//
 
-import {name as homeContentsReducerName, homeContentsReducer} from './containers/HomeContents/reducer';
+import {name as homePageReducerName, homePageReducer} from './containers/HomePage/reducer';
 import {RN_ROUTER} from './constants';
 
 // import team4HttpReducer from './containers/Team4/reducer';
@@ -29,7 +29,7 @@ export default function createReducer(asyncReducers: any) {
         [httpReducerName]: httpReducer,
         // team4HttpQuery: team4HttpReducer,
         // ---------add reducer----------//
-        [homeContentsReducerName]: homeContentsReducer,
+        [homePageReducerName]: homePageReducer,
 
         ...asyncReducers  //???
     });

@@ -9,18 +9,18 @@ function* fetchData(action: Action<any>) {
     try {
         const response = (yield call(fetch, './mock/homeContents/content1.json')) as Response;
         if (response.ok) {
-            console.log(" HomeContents requestDataSuccess");
+            console.log(" HomePage requestDataSuccess");
 
             const json = yield response.json();
             // put是saga对Redux中dispatch方法的一个封装
             yield put(contentListSuccess(json));
         } else {
-            console.log("HomeContents requestDataError");
+            console.log("HomePage requestDataError");
 
             yield put(contentListError(response.status));
         }
     } catch (e) {
-        console.log("HomeContents requestDataFaild");
+        console.log("HomePage requestDataFaild");
 
         yield put(contentListFaild(e.message));
     }

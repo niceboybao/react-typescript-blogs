@@ -28,6 +28,9 @@
     "keywords": [
         "react",
         "redux",
+        "react-redux",
+        "sagas",
+        "reselect",
         "antd",
         "webpack"
     ],

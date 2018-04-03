@@ -1,7 +1,7 @@
 import {createAction, handleActions, Action} from 'redux-actions';
 
 // 最外层constants 统一命名
-import {RN_HomeContents} from '../../constants';
+import {RN_HomePage} from '../../constants';
 //组件的 constants
 import {
     //获取接口数据
@@ -10,9 +10,9 @@ import {
     CONTENTLISTFAILD
 } from './constants';
 
-export const name = RN_HomeContents;
+export const name = RN_HomePage;
 
-export const homeContentsReducer = handleActions({
+export const homePageReducer = handleActions({
 
     [CONTENTLISTSUCCESS]: (state, action: Action<any>) => {
         return Object.assign({}, state, {

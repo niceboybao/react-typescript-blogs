@@ -6,10 +6,12 @@ and open the template in the editor.
 /* 
     Created on : 2018-4-1, 23:11:10
     Author     : Baldwin
+    antd BackTop style
 */
 
 .ant-back-top {
-    bottom: 100px;
+    bottom: 40px !important;
+    right: 50px !important;
 }
 .ant-back-top-inner {
     height: 40px;

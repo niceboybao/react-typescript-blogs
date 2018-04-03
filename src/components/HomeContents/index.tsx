@@ -1,6 +1,6 @@
 /**
-* @name BackToTop
-* @describe 返回顶部组件
+* @name HomeContents
+* @describe 博客内容组件
 * @author Baldwin/niceboybao@gmail.com
 * @data 2018-3-30, 14:41:58
 * @version 1.0.0
@@ -9,30 +9,29 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {BackTop} from 'antd';
 
 //import css
 import style from './style.scss';
 //dispatch actions
-//import {contentList} from './actions';
 
 // properties directed pass in throw react tag
-interface BackToTopOwnProps {
+interface HomeContentsOwnProps {
+    type?: string;  //组件状态
 }
 
 //properties from redux store
-interface BackToTopDispatchProps {
+interface HomeContentsDispatchProps {
 }
 
 //diapatch function from redux store
-interface BackToTopStateProps {
+interface HomeContentsStateProps {
 }
 //component own properties
-interface BackToTopState {
+interface HomeContentsState {
 
 }
 
-@(connect<BackToTopStateProps, BackToTopOwnProps & BackToTopDispatchProps, BackToTopState>(
+@(connect<HomeContentsStateProps, HomeContentsOwnProps & HomeContentsDispatchProps, HomeContentsState>(
     (state: any) => (
         {
 
@@ -43,27 +42,36 @@ interface BackToTopState {
     })
 ) as any)
 
-export default class BackToTop extends React.Component<BackToTopOwnProps & BackToTopDispatchProps & BackToTopStateProps, BackToTopState> {
-    constructor(Props: BackToTopOwnProps & BackToTopDispatchProps & BackToTopStateProps) {
+export default class HomeContents extends React.Component<HomeContentsOwnProps & HomeContentsDispatchProps & HomeContentsStateProps, HomeContentsState> {
+    constructor(Props: HomeContentsOwnProps & HomeContentsDispatchProps & HomeContentsStateProps) {
         super(Props);
-        console.log("constructor BackToTop");
+        console.log("constructor HomeContents");
     }
 
-    //BackToTop 组件生命周期
+    //HomeContents 组件生命周期
+    // 设置默认的props，也可以用dufaultProps设置组件的默认属性。
+    //    getDefaultProps() {
+    //        console.log("HomeContents getDefaultProps");
+    //    }
+    // 在使用es6的class语法时是没有这个钩子函数的，可以直接在constructor中定义this.state。此时可以访问this.props。
+    //    getInitialState() {
+    //        console.log("HomeContents getInitialState");
+    //    }
+    // Team1组件初始化时调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
 
     componentWillMount() {
-        console.log("BackToTop componentWillMount");
+        console.log("HomeContents componentWillMount");
     }
 
     // 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次
     // 在这个周期钩子里面处理接口请求
     componentDidMount() {
-        console.log("BackToTop componentDidMount");
+        console.log("HomeContents componentDidMount");
     }
 
     // 组件初始化时不调用，组件接受新的props时调用。
     componentWillReceiveProps(nextProps: any) {
-        console.log("BackToTop componentWillReceiveProps");
+        console.log("HomeContents componentWillReceiveProps");
     }
 
     /*
@@ -73,33 +81,33 @@ export default class BackToTop extends React.Component<BackToTopOwnProps & BackT
      */
     //组件接受新的state或者props时调用
     shouldComponentUpdate(nextProps: any, nextState: any) {
-        console.log("BackToTop shouldComponentUpdate");
+        console.log("HomeContents shouldComponentUpdate");
         return true;
     }
 
     // 组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state
     componentWillUpdate(nextProps: any, nextState: any) {
-        console.log("BackToTop componentWillUpdate");
+        console.log("HomeContents componentWillUpdate");
     }
 
     // 组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点。
     componentDidUpdate() {
-        console.log("BackToTop componentDidUpdate");
+        console.log("HomeContents componentDidUpdate");
     }
 
     // 组件将要卸载时调用，一些事件监听和定时器需要在此时清除。
     componentWillUnmount() {
-        console.log("BackToTop componentWillUnmount");
+        console.log("HomeContents componentWillUnmount");
     }
 
-    // 组件渲染
+    // 触发视图的重新渲染
     render() {
-        console.log("BackToTop render");
+        console.log("====== HomeContents render ======");
 
         return (
-            <BackTop>
-                <div className="ant-back-top-inner">UP</div>
-            </BackTop>
+            <div className={style.content}>
+                HomeContents
+            </div>
 
         );
     }

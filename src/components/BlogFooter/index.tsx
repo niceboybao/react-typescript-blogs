@@ -1,6 +1,6 @@
 /**
-* @name HomeContents
-* @describe 博客内容组件
+* @name BlogFooter
+* @describe 底部说明组件
 * @author Baldwin/niceboybao@gmail.com
 * @data 2018-3-30, 14:41:58
 * @version 1.0.0
@@ -12,74 +12,69 @@ import {connect} from 'react-redux';
 
 //import css
 import style from './style.scss';
+
 //dispatch actions
-import {contentList} from './actions';
 
 // properties directed pass in throw react tag
-interface HomeContentsOwnProps {
-    type?: string;  //组件状态
+interface BlogFooterOwnProps {
+
 }
 
 //properties from redux store
-interface HomeContentsDispatchProps {
-    requestContentList?: Function;
+interface BlogFooterDispatchProps {
+
 }
 
 //diapatch function from redux store
-interface HomeContentsStateProps {
-    listData?: any; //主页列表数据
+interface BlogFooterStateProps {
+
 }
 //component own properties
-interface HomeContentsState {
+interface BlogFooterState {
 
 }
 
-@(connect<HomeContentsStateProps, HomeContentsOwnProps & HomeContentsDispatchProps, HomeContentsState>(
+@(connect<BlogFooterStateProps, BlogFooterOwnProps & BlogFooterDispatchProps, BlogFooterState>(
     (state: any) => (
         {
-            listData: state.homeContentsReducer.listData
+
         }
     ),
     (dispatch: any) => ({
-        //获取主页列表数据
-        requestContentList: () => {
-            dispatch(contentList());
-        }
+
     })
 ) as any)
 
-export default class HomeContents extends React.Component<HomeContentsOwnProps & HomeContentsDispatchProps & HomeContentsStateProps, HomeContentsState> {
-    constructor(Props: HomeContentsOwnProps & HomeContentsDispatchProps & HomeContentsStateProps) {
+export default class BlogFooter extends React.Component<BlogFooterOwnProps & BlogFooterDispatchProps & BlogFooterStateProps, BlogFooterState> {
+    constructor(Props: BlogFooterOwnProps & BlogFooterDispatchProps & BlogFooterStateProps) {
         super(Props);
-        console.log("constructor HomeContents");
+        console.log("constructor BlogFooter");
     }
 
-    //HomeContents 组件生命周期
+    //BlogFooter 组件生命周期
     // 设置默认的props，也可以用dufaultProps设置组件的默认属性。
     //    getDefaultProps() {
-    //        console.log("HomeContents getDefaultProps");
+    //        console.log("BlogFooter getDefaultProps");
     //    }
     // 在使用es6的class语法时是没有这个钩子函数的，可以直接在constructor中定义this.state。此时可以访问this.props。
     //    getInitialState() {
-    //        console.log("HomeContents getInitialState");
+    //        console.log("BlogFooter getInitialState");
     //    }
     // Team1组件初始化时调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
 
     componentWillMount() {
-        console.log("HomeContents componentWillMount");
+        console.log("BlogFooter componentWillMount");
     }
 
     // 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次
     // 在这个周期钩子里面处理接口请求
     componentDidMount() {
-        console.log("HomeContents componentDidMount");
-        //获取主页列表数据
-        this.props.requestContentList();
+        console.log("BlogFooter componentDidMount");
     }
 
     // 组件初始化时不调用，组件接受新的props时调用。
     componentWillReceiveProps(nextProps: any) {
-        console.log("HomeContents componentWillReceiveProps");
+        console.log("BlogFooter componentWillReceiveProps");
     }
 
     /*
@@ -89,38 +84,34 @@ export default class HomeContents extends React.Component<HomeContentsOwnProps &
      */
     //组件接受新的state或者props时调用
     shouldComponentUpdate(nextProps: any, nextState: any) {
-        console.log("HomeContents shouldComponentUpdate");
+        console.log("BlogFooter shouldComponentUpdate");
         return true;
     }
 
     // 组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state
     componentWillUpdate(nextProps: any, nextState: any) {
-        console.log("HomeContents componentWillUpdate");
+        console.log("BlogFooter componentWillUpdate");
     }
 
     // 组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点。
     componentDidUpdate() {
-        console.log("HomeContents componentDidUpdate");
+        console.log("BlogFooter componentDidUpdate");
     }
 
     // 组件将要卸载时调用，一些事件监听和定时器需要在此时清除。
     componentWillUnmount() {
-        console.log("HomeContents componentWillUnmount");
+        console.log("BlogFooter componentWillUnmount");
     }
 
-    // 组件渲染
+    // 触发视图的重新渲染
     render() {
-        console.log("HomeContents render");
-        const {listData} = this.props;
+        console.log("====== BlogFooter render ======");
 
         return (
-            <div className={style.content}>
-                {
-                    typeof listData.articleText !== 'undefined'
-                    && listData.articleText
-                }
+            <div className={style.footer}>
+                <div className={style.fLeft}></div>
+                <div className={style.fRight}>Blogs Management Console Powered by react ©2018</div>
             </div>
-
         );
     }
 }

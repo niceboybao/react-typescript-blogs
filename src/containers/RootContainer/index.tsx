@@ -7,20 +7,27 @@
 * 
 */
 
-import React from "react";
+import React from 'react';
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 import {Switch} from 'react-router';
-import {BrowserRouter, Route, Link, withRouter, RouteComponentProps} from 'react-router-dom';
+/*
+ * Prompt:Prompt组件用于给用户提示信息
+ */
+import {BrowserRouter, Route, Link, withRouter, RouteComponentProps, Prompt} from 'react-router-dom';
 import {connect, MapStateToProps} from 'react-redux';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider, Footer } = Layout;
 
 //import compontent
-import {NoMatch} from './NoMatch';
-import createRoutes from '../routes';
-import HomeContents from './HomeContents';
-import BackToTop from './BackToTop';
+import {NoMatch} from '../NoMatch';
+import createRoutes from '../../routes';
+
+//import HomeContents from '../../components/HomeContents';
+import HomeNavigation from '../../components/HomeNavigation';
+import HomeInformation from '../../components/HomeInformation';
+import BackToTop from '../../components/BackToTop';
+import BlogFooter from '../../components/BlogFooter';
 
 //import css
 import style from './style.scss';
@@ -39,70 +46,62 @@ export interface RootContainerState {
 
 export class RootContainer extends React.Component<RootContainerStateProps & RootContainerOwnProps, RootContainerState> {
 
-    //    allRoutes: Array<{path: string, component?: any, exact?: Boolean, render?: (props: RouteComponentProps<any>) => React.ReactNode}>;
+    allRoutes: Array<{path: string, component?: any, exact?: Boolean, render?: (props: RouteComponentProps<any>) => React.ReactNode}>;
 
     constructor(props: RootContainerStateProps & RootContainerOwnProps) {
         super(props);
-        // this.toggle = this.toggle.bind(this);
-        // this.generateRoutes = this.generateRoutes.bind(this);
 
-        //        this.state = {
-        //            collapsed: false,
-        //            mode: 'inline'
-        //        };
-        //        this.allRoutes = [];
-        //        this.allRoutes = createRoutes();
+        this.generateRoutes = this.generateRoutes.bind(this);
+
+        this.allRoutes = [];
+        this.allRoutes = createRoutes();
     }
 
-    //    toggle = () => {
-    //        this.setState({
-    //            collapsed: !this.state.collapsed,
-    //            mode: !this.state.collapsed ? 'vertical' : 'inline',
-    //        });
-    //    }
+    // 根路由方法
+    generateRoutes() {
+        return this.allRoutes.map((route, index) => {
+            if (typeof route.component !== 'undefined') {
+                if (route.exact) {
+                    return <Route key={'ru_' + index} exact path={route.path} component={route.component} />;
+                } else {
+                    return <Route key={'ru_' + index} path={route.path} component={route.component} />;
+                }
+            }
+            else if (typeof route.render !== 'undefined') {
+                if (route.exact) {
+                    return <Route key={'ru_' + index} exact path={route.path} render={route.render} />;
+                } else {
+                    return <Route key={'ru_' + index} path={route.path} render={route.render} />;
+                }
+            }
+        })
+    }
 
-    //    generateRoutes = () => {
-    //        return this.allRoutes.map((route, index) => {
-    //            if (typeof route.component !== 'undefined') {
-    //                if (route.exact) {
-    //                    return <Route key={'ru_' + index} exact path={route.path} component={route.component} />;
-    //                } else {
-    //                    return <Route key={'ru_' + index} path={route.path} component={route.component} />;
-    //                }
-    //            }
-    //
-    //            else if (typeof route.render !== 'undefined') {
-    //                if (route.exact) {
-    //                    return <Route key={'ru_' + index} exact path={route.path} render={route.render} />;
-    //                } else {
-    //                    return <Route key={'ru_' + index} path={route.path} render={route.render} />;
-    //                }
-    //            }
-    //        })
-    //    }
-
-
-
+    // 触发视图的重新渲染
     render() {
-        //        const routes = this.generateRoutes();
+        console.log("====== RootContainer render ======");
+
+        const routes = this.generateRoutes();
         return (
-            <div>
+            <div className={style.rootHome}>
                 <BackToTop />
-                <div className={style.homes}>
-                    <div className={style.home}>
+                <div className={style.home}>
+                    <div className={style.homeContents}>
                         <div className={style.homeLeft}>
                             <div className={style.homeNavigation}>
-                                HomeNavigation
-                        </div>
+                                <HomeNavigation />
+                            </div>
                             <div className={style.homeInformation}>
-                                HomeInformation
-                        </div>
+                                <HomeInformation />
+                            </div>
                         </div>
                         <div className={style.homeRight}>
-                            <HomeContents type='init' />
+                            <Prompt when={false} message="Are you sure you want to leave?" />
+                            {React.createElement(Switch, null, [...routes, <Route key='ru_nomatch' component={NoMatch} />])}
                         </div>
                     </div>
                 </div>
+                <BlogFooter />
             </div>
 
         );

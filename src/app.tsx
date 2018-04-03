@@ -6,7 +6,6 @@
 * @version 1.0.0
 * 
 */
-
 import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -21,8 +20,8 @@ import Es6Promise from 'es6-promise';
 import * as log from 'loglevel';
 
 import createReducer from './reducers';
-import {Hello} from './components/Hello/';
-import {RootContainer} from './containers/';
+//import {Hello} from './components/Hello/';
+import {RootContainer} from './containers/RootContainer/';
 import rootSaga from './sagas';
 import {HEMPConfig} from './config';
 

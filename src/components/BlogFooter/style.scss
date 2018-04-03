@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018-4-2, 11:56:15
+    Author     : Baldwin
+*/
+
+$footHeight :120px;  //底部高度
+@import "../../containers/RootContainer/global";
+
+.footer{
+    height: $footHeight;
+    background-color: nth($blogBackground,1);
+    width:  nth($blogWidth,1);
+    display: flex;
+    margin: 0 auto;
+    .fLeft{
+        width:  nth($blogWidth,2);
+        height: 100%;
+    }
+    .fRight{
+        flex: 1;
+        text-align: center;
+        line-height: $footHeight;
+    }
+}
