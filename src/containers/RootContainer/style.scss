@@ -18,7 +18,7 @@ scss中的变量、函数、混合、placeholder采用驼峰式命名  $colorBla
 @import "global";
 @import "../../components/BackToTop/style";
 
-.rootHome{
+.root-home{
     background: nth($blogBackground,1);
     /*    display: flex;
         flex-direction: column;
@@ -30,26 +30,26 @@ scss中的变量、函数、混合、placeholder采用驼峰式命名  $colorBla
         justify-content: center;
         /*background: nth($blogBackground,1);*/
         overflow-y: auto;
-        .homeContents{
+        .home-contents{
             height: 100%;
             width: nth($blogWidth,1);
             display: flex;
-            .homeLeft{
+            .home-left{
                 width: nth($blogWidth,2);
                 %Navigation{
                     background: nth($blogBackground,2);
                     margin: 0 20px 15px 0;
                 }
-                .homeNavigation{
+                .home-navigation{
                     height: 375px;
                     @extend %Navigation;
                 }
-                .homeInformation{
+                .home-information{
                     height: 380px;
                     @extend %Navigation;
                 }
             }
-            .homeRight{
+            .home-right{
                 flex: 1;
                 font-size: 40px;
                 background: nth($blogBackground,2);

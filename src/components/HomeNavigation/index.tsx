@@ -4,7 +4,7 @@
 * @author Baldwin/niceboybao@gmail.com
 * @data 2018-3-30, 14:41:58
 * @version 1.0.0
-* 
+*
 */
 
 
@@ -12,6 +12,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {push} from 'react-router-redux';
 
 //import css
 import style from './style.scss';
@@ -113,10 +114,10 @@ export default class HomeNavigation extends React.Component<HomeNavigationOwnPro
         return (
             <div>
                 <div>
-                    <Link to="/home">HomePage</Link>
+                    <Link to="/home">HomePageHomePage</Link>
                 </div>
                 <div>
-                    <Link to="/about">HomeAbout</Link>
+                    <Link to="/about">HomeAboutHomeAbout</Link>
                 </div>
             </div>
 

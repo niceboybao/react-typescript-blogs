@@ -15,6 +15,9 @@ import createSagaMiddleware from 'redux-saga';
 import {AppContainer} from 'react-hot-loader';
 import {createBrowserHistory} from 'history';
 //import createLogger from 'redux-logger';
+/*
+ * reference https://github.com/reactjs/react-router-redux for react-router-redux
+ */
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux';
 import Es6Promise from 'es6-promise';
 import * as log from 'loglevel';

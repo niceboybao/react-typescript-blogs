@@ -83,19 +83,19 @@ export class RootContainer extends React.Component<RootContainerStateProps & Roo
 
         const routes = this.generateRoutes();
         return (
-            <div className={style.rootHome}>
+            <div className={style['root-home']}>
                 <BackToTop />
                 <div className={style.home}>
-                    <div className={style.homeContents}>
-                        <div className={style.homeLeft}>
-                            <div className={style.homeNavigation}>
+                    <div className={style['home-contents']}>
+                        <div className={style['home-left']}>
+                            <div className={style['home-navigation']}>
                                 <HomeNavigation />
                             </div>
-                            <div className={style.homeInformation}>
+                            <div className={style['home-information']}>
                                 <HomeInformation />
                             </div>
                         </div>
-                        <div className={style.homeRight}>
+                        <div className={style['home-right']}>
                             <Prompt when={false} message="Are you sure you want to leave?" />
                             {React.createElement(Switch, null, [...routes, <Route key='ru_nomatch' component={NoMatch} />])}
                         </div>
