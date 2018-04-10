@@ -95,7 +95,7 @@ export class RootContainer extends React.Component<RootContainerStateProps & Roo
                                 <HomeInformation />
                             </div>
                         </div>
-                        <div className={style['home-right']}>
+                        <div id="home_right" ref="homeRight" className={style['home-right']}>
                             <Prompt when={false} message="Are you sure you want to leave?" />
                             {React.createElement(Switch, null, [...routes, <Route key='ru_nomatch' component={NoMatch} />])}
                         </div>

@@ -29,7 +29,7 @@ interface BackToTopStateProps {
 }
 //component own properties
 interface BackToTopState {
-
+    percent?: number, //滚动条百分比
 }
 
 @(connect<BackToTopStateProps, BackToTopOwnProps & BackToTopDispatchProps, BackToTopState>(
@@ -47,10 +47,12 @@ export default class BackToTop extends React.Component<BackToTopOwnProps & BackT
     constructor(Props: BackToTopOwnProps & BackToTopDispatchProps & BackToTopStateProps) {
         super(Props);
         console.log("constructor BackToTop");
+        this.state = {
+            percent: 0,
+        }
     }
 
     //BackToTop 组件生命周期
-
     componentWillMount() {
         console.log("BackToTop componentWillMount");
     }
@@ -58,6 +60,22 @@ export default class BackToTop extends React.Component<BackToTopOwnProps & BackT
     // 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次
     // 在这个周期钩子里面处理接口请求
     componentDidMount() {
+        const TARGET_HEIGHT = 1800//document.getElementById("home_right").offsetHeight;
+        const SCREEN_HEIGHT = document.documentElement.clientHeight;
+        const FOOT_HEIGHT = 120;
+        const ALL_HEIGHT = TARGET_HEIGHT + FOOT_HEIGHT - SCREEN_HEIGHT;
+        let scrollTop = document.documentElement.scrollTop;
+
+        //全局滚动条
+        window.onscroll = () => {
+            scrollTop = document.documentElement.scrollTop;
+            let percent = Math.round((scrollTop / ALL_HEIGHT) * 100);
+
+            this.setState({
+                percent: percent
+            });
+
+        }
         console.log("BackToTop componentDidMount");
     }
 
@@ -90,15 +108,21 @@ export default class BackToTop extends React.Component<BackToTopOwnProps & BackT
     // 组件将要卸载时调用，一些事件监听和定时器需要在此时清除。
     componentWillUnmount() {
         console.log("BackToTop componentWillUnmount");
+        //消除全局滚动条方法
+        window.onscroll = null;
     }
 
     // 触发视图的重新渲染
     render() {
         console.log("====== BackToTop render ======");
-
+        const {percent} = this.state;
+        const backTopProps = {
+            visibilityHeight: 200,
+            //            target: () => this.refs.homeRight,
+        };
         return (
-            <BackTop>
-                <div className="ant-back-top-inner">UP</div>
+            <BackTop {...backTopProps}>
+                <div className="ant-back-top-inner">{percent}%</div>
             </BackTop>
 
         );
