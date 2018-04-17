@@ -50,7 +50,7 @@ const mapStateToProps: MapStateToProps<Team2StateProps, Team2OwnProps> = (state:
     };
 }
 
-// mapDispatchToProps返回的对象其属性其实就是一个个actionCreator
+// mapDispatchToProps返回的对象其属性其实就是一个actionCreator
 const mapDispatchToProps: MapDispatchToProps<Team2DispatchProps, Team2OwnProps> = (dispatch: any) => {
     return {
         counterPlusOne: () => {

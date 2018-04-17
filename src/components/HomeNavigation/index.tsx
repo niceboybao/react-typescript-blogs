@@ -21,7 +21,7 @@ import style from './style.scss';
 
 // properties directed pass in throw react tag
 interface HomeNavigationOwnProps {
-
+    type?: boolean,
 }
 
 //properties from redux store
@@ -56,16 +56,8 @@ export default class HomeNavigation extends React.Component<HomeNavigationOwnPro
     }
 
     //HomeNavigation 组件生命周期
-    // 设置默认的props，也可以用dufaultProps设置组件的默认属性。
-    //    getDefaultProps() {
-    //        console.log("HomeNavigation getDefaultProps");
-    //    }
-    // 在使用es6的class语法时是没有这个钩子函数的，可以直接在constructor中定义this.state。此时可以访问this.props。
-    //    getInitialState() {
-    //        console.log("HomeNavigation getInitialState");
-    //    }
-    // Team1组件初始化时调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
 
+    // Team1组件初始化时调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
     componentWillMount() {
         console.log("HomeNavigation componentWillMount");
     }

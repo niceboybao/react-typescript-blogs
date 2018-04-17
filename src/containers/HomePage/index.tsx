@@ -34,7 +34,7 @@ interface HomePageStateProps {
 }
 //component own properties
 interface HomePageState {
-
+    homePage?: boolean,
 }
 
 @(connect<HomePageStateProps, HomePageOwnProps & HomePageDispatchProps, HomePageState>(
@@ -55,33 +55,33 @@ export default class HomePage extends React.Component<HomePageOwnProps & HomePag
     constructor(Props: HomePageOwnProps & HomePageDispatchProps & HomePageStateProps) {
         super(Props);
         console.log("constructor HomePage");
+        
+        this.state = {
+            homePage: true,
+        };
     }
 
     //HomePage 组件生命周期
-    // 设置默认的props，也可以用dufaultProps设置组件的默认属性。
-    //    getDefaultProps() {
-    //        console.log("HomePage getDefaultProps");
-    //    }
-    // 在使用es6的class语法时是没有这个钩子函数的，可以直接在constructor中定义this.state。此时可以访问this.props。
-    //    getInitialState() {
-    //        console.log("HomePage getInitialState");
-    //    }
-    // Team1组件初始化时调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
 
+    // Team1组件初始化时调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state。
     componentWillMount() {
         console.log("HomePage componentWillMount");
+        //在这个钩子函数里面setState不会触发render
     }
 
     // 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次
     // 在这个周期钩子里面处理接口请求
     componentDidMount() {
         console.log("HomePage componentDidMount");
+
         //获取主页列表数据
         this.props.requestContentList();
+
     }
 
     // 组件初始化时不调用，组件接受新的props时调用。
     componentWillReceiveProps(nextProps: any) {
+        debugger;
         console.log("HomePage componentWillReceiveProps");
     }
 
