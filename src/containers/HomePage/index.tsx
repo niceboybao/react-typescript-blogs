@@ -4,7 +4,7 @@
 * @author Baldwin/niceboybao@gmail.com
 * @data 2018-04-02, 21:26:58
 * @version 1.0.0
-* 
+*
 */
 
 import React from 'react';
@@ -55,7 +55,7 @@ export default class HomePage extends React.Component<HomePageOwnProps & HomePag
     constructor(Props: HomePageOwnProps & HomePageDispatchProps & HomePageStateProps) {
         super(Props);
         console.log("constructor HomePage");
-        
+
         this.state = {
             homePage: true,
         };
@@ -81,7 +81,6 @@ export default class HomePage extends React.Component<HomePageOwnProps & HomePag
 
     // 组件初始化时不调用，组件接受新的props时调用。
     componentWillReceiveProps(nextProps: any) {
-        debugger;
         console.log("HomePage componentWillReceiveProps");
     }
 

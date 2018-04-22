@@ -8,6 +8,7 @@ import sagaHomePage from './containers/HomePage/sagas';
 
 export default function* rootSaga() {
     yield all([
+        //创建一条 Effect 描述信息，指示 middleware 以 无阻塞调用 方式执行 fn。
         fork(sagaTeam1),
         fork(sagaTeam3),
         fork(sagaTeam4),

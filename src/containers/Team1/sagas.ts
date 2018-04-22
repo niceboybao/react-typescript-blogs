@@ -11,7 +11,8 @@ function* fetchData(action: Action<any>) {
         if (response.ok) {
             const json = yield response.json();
             console.log(" team1 requestDataSuccess");
-            //             put是saga对Redux中dispatch方法的一个封装
+            // 创建一条 Effect 描述信息，指示 middleware 发起一个 action 到 Store。
+            // put是saga对Redux中dispatch方法的一个封装
             yield put(requestDataSuccess(json));
         } else {
             console.log("team1 requestDataError");
@@ -24,5 +25,6 @@ function* fetchData(action: Action<any>) {
 }
 
 export default function* saga() {
+    //在发起的 action 与 REQUESTDATA 匹配时派生指定的 saga。
     yield takeEvery(REQUESTDATA, fetchData);
 }

@@ -15,6 +15,7 @@ export const name = RN_HomePage;
 export const homePageReducer = handleActions({
 
     [CONTENTLISTSUCCESS]: (state, action: Action<any>) => {
+        debugger;
         return Object.assign({}, state, {
             listData: action.payload
         });

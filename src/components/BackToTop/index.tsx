@@ -4,7 +4,7 @@
 * @author Baldwin/niceboybao@gmail.com
 * @data 2018-3-30, 14:41:58
 * @version 1.0.0
-* 
+*
 */
 
 import React from 'react';
@@ -91,18 +91,18 @@ export default class BackToTop extends React.Component<BackToTopOwnProps & BackT
      */
     //组件接受新的state或者props时调用
     shouldComponentUpdate(nextProps: any, nextState: any) {
-        console.log("BackToTop shouldComponentUpdate");
+        // console.log("BackToTop shouldComponentUpdate");
         return true;
     }
 
     // 组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state
     componentWillUpdate(nextProps: any, nextState: any) {
-        console.log("BackToTop componentWillUpdate");
+        // console.log("BackToTop componentWillUpdate");
     }
 
     // 组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点。
     componentDidUpdate() {
-        console.log("BackToTop componentDidUpdate");
+        // console.log("BackToTop componentDidUpdate");
     }
 
     // 组件将要卸载时调用，一些事件监听和定时器需要在此时清除。
@@ -114,7 +114,7 @@ export default class BackToTop extends React.Component<BackToTopOwnProps & BackT
 
     // 触发视图的重新渲染
     render() {
-        console.log("====== BackToTop render ======");
+        // console.log("====== BackToTop render ======");
         const {percent} = this.state;
         const backTopProps = {
             visibilityHeight: 200,

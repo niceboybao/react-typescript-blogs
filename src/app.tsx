@@ -38,6 +38,7 @@ import '!style-loader!css-loader!antd/dist/antd.min.css';
 window.hempConfig = new HEMPConfig;
 
 // create the saga middleware
+//创建一个 Redux 中间件，将 Sagas 与 Redux Store 建立连接。
 const sagaMiddleware = createSagaMiddleware();
 window.sagaMiddleware = sagaMiddleware;
 

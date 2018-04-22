@@ -4,7 +4,7 @@
 * @author Baldwin/niceboybao@gmail.com
 * @data 2018-3-30, 14:41:58
 * @version 1.0.0
-* 
+*
 */
 
 import React from 'react';
@@ -64,8 +64,12 @@ export class RootContainer extends React.Component<RootContainerStateProps & Roo
         this.allRoutes = [];
         this.allRoutes = createRoutes();
     }
-
+    componentWillMount() {
+        console.log("RootContainer componentWillMount");
+    }
     componentDidMount() {
+        const CONTENT_HEIGHT = document.getElementById("home_right").offsetHeight;
+
         console.log("RootContainer componentDidMount");
     }
     // 根路由方法
@@ -127,14 +131,14 @@ export class RootContainer extends React.Component<RootContainerStateProps & Roo
 
         );
     }
-    //    
+    //
 
 
     //    render() {
     //        const routes = this.generateRoutes();
     //        return (
     //            <Layout>
-    //                   
+    //
     //
     //                    <Content style={{margin: '0 1px'}}>
     //                        {routes}
