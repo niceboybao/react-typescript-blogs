@@ -1,4 +1,4 @@
-import {createSelector} from 'reselect';
+import { createSelector } from 'reselect';
 
 //data
 //createSelector(...inputSelectors | [inputSelectors], resultFunc)
@@ -30,4 +30,3 @@ export const countSelector = createSelector(
 //    //debugger
 //    return state.team1Reducer.count as number;
 //}
-
