@@ -1,22 +1,12 @@
 # 做了一年的react自己的感悟和总结
 
-## 目录
-
-- [做react项目需要掌握什么](#做react项目需要掌握什么)
-- [react](#react)
-- [redux](#redux)
-- [react-router](#react-router)
-- [redux-saga](#redux-saga)
-- [reselect](#reselect)
-- [ES6](#ES6)
-- [webpack](#webpack)
-- [Sass or Less](#Sass-or-Less)
-
 react确实是一个神奇而优雅的框架。在从事react项目之前，一直是在做angular的，angular是一个全面和庞大的框架，在起初设计的时候什么都有，复杂程度也很高，所以用angular做项目基本上不需要其他的辅助库来配合。但是react项目真的是不一样了，要是只会一个react的话，很难开发出需求的。因为react就只负责UI的渲染。
+
+这里是我开发react工程的一个模板，平时开发过程中遇到的需求上面都有对应的实例，技术栈：`react` + `react-router` + `react-redux` + `saga` + `reselector` + `webpack` + `ES6` + `Typescript` + `sass`。[点击这里访问](https://github.com/niceboybao/iReact)
 
 ## 做react项目需要掌握什么
 
-[react](https://github.com/facebook/react) 功能单一用于UI渲染，[redux](https://github.com/reactjs/redux) 用来管理数据，[react-router](https://github.com/ReactTraining/react-router) 用来管理路由，[webpack](https://doc.webpack-china.org/concepts/loaders/#-loader) 用来配置工程，[ES6](http://es6.ruanyifeng.com/) 让代码更加优雅，[redux-saga](https://github.com/redux-saga/redux-saga) 用来处理异步请求，[reselect](https://github.com/reactjs/reselect) 缓存机制用来减少state改变带来的渲染压力,还有一些为了交互衍生出来的中间件 [react-redux](https://github.com/reactjs/react-redux)、[react-router-redux](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux)、[react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) ，预处理器[Sass](https://www.w3cplus.com/sassguide/syntax.html)或[Less](https://www.w3cschool.cn/less/) 尽量也掌握下。
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421aa33b70933d?w=640&h=134&f=jpeg&s=8540) [react](https://github.com/facebook/react) 功能单一用于UI渲染，[redux](https://github.com/reactjs/redux) 用来管理数据，[react-router](https://github.com/ReactTraining/react-router) 用来管理路由，[webpack](https://doc.webpack-china.org/concepts/loaders/#-loader) 用来配置工程，[ES6](http://es6.ruanyifeng.com/) 让代码更加优雅，[redux-saga](https://github.com/redux-saga/redux-saga) 用来处理异步请求，[reselect](https://github.com/reactjs/reselect) 缓存机制用来减少state改变带来的渲染压力,还有一些为了交互衍生出来的中间件 [react-redux](https://github.com/reactjs/react-redux)、[react-router-redux](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux)、[react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) ，预处理器[Sass](https://www.w3cplus.com/sassguide/syntax.html)或[Less](https://www.w3cschool.cn/less/) 尽量也掌握下。
 
 ## react
 
@@ -26,7 +16,7 @@ react确实是一个神奇而优雅的框架。在从事react项目之前，一�
 
 react最难能可贵的就是虚拟dom的思想，这里有个贴切的比喻：把dom和JavaScript想象为各自的2个岛屿，中间有桥梁相连，但是桥上设有收费站，JavaScript去访问dom岛屿的次数越多，费用就越高。这就是一个js操作dom的过程，也许我们经常听到或者看到说尽量少的去操作dom，很耗性能。但是[DOM 操作成本到底高在哪儿？](http://mp.weixin.qq.com/s/MdnUDH3FwQ5Yv3LeHI3PMQ),这边小总结下：
 
-从输入url到页面加载好是一个很漫长的过程，我们就从html的解析开始说起。①解析HTML，开始构建DOM树；②解析CSS，生成CSS规则树；③合并DOM树和CSS规则树，生成render树；④布局render树（Layout/reflow），这时候负责元素尺寸大小，位置的计算，属于js中回流过程；⑤绘制render树（paint），绘制页面像素，属于重绘的过程；⑥浏览器会将各层的信息发送给GPU(图像处理器)，GPU将各层合成（composite），显示在屏幕上。这是初始化渲染的过程，通过js操作DOM后，会引起 [回流](http://www.css88.com/archives/4996) 和重绘，回流的成本很高，一个节点的回流会导致兄弟节点和子节点的回流，这样就一直在消耗GPU资源，所以才有了成本高的说法。
+从输入uri到页面加载好是一个很漫长的过程，我们就从html的解析开始说起。①解析HTML，开始构建DOM树；②解析CSS，生成CSS规则树；③合并DOM树和CSS规则树，生成render树；④布局render树（Layout/reflow），这时候负责元素尺寸大小，位置的计算，属于js中回流过程；⑤绘制render树（paint），绘制页面像素，属于重绘的过程；⑥浏览器会将各层的信息发送给GPU(图像处理器)，GPU将各层合成（composite），显示在屏幕上。这是初始化渲染的过程，通过js操作DOM后，会引起 [回流](http://www.css88.com/archives/4996) 和重绘，回流的成本很高，一个节点的回流会导致兄弟节点和子节点的回流，这样就一直在消耗GPU资源，所以才有了成本高的说法。
 
 我们从操作dom的成本开始引入react，它创造了虚拟dom并且将它们储存起来，每当状态发生变化的时候就会创造新的虚拟节点和以前的进行对比，让变化的部分进行渲染。整个过程没有对dom进行获取和操作，只有等真正render时，才会去操作真实dom，从而引发页面的渲染。
 
@@ -56,7 +46,7 @@ react的diff算法用在什么地方呢？当组件更新的时候，react会创
 
 ![](https://user-gold-cdn.xitu.io/2018/4/9/162aa85c10ccfb27?w=736&h=409&f=png&s=22848)
 
-需要了解清楚，看源码
+需要深入了解diff源码的请参考[源码解析](https://calendar.perfplanet.com/2013/diff/)！
 
 ### 单项数据流
 
@@ -156,13 +146,43 @@ this.props.clearPointData();
 
 以上可以看出来react总共有10个周期函数（render重复一次），这个10个函数可以满足我们所有对组件操作的需求，利用的好可以提高开发效率和组件性能。
 
-## redux
-
-### react-redux
-
 ## react-router
 
-要了解下router的机制
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421b8822a755be?w=640&h=268&f=jpeg&s=10816) Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。Route则对路由地址和组件进行绑定，Route具有嵌套功能，表示路由地址的包涵关系，这和组件之间的嵌套并没有直接联系。Route可以向绑定的组件传递7个属性：children，history，location，params，route，routeParams，routes，每个属性都包涵路由的相关的信息。比较常用的有children（以路由的包涵关系为区分的组件），location（包括地址，参数，地址切换方式，key值，hash值）。react-router提供Link标签，这只是对a标签的封装，值得注意的是，点击链接进行的跳转并不是默认的方式，react-router阻止了a标签的默认行为并用pushState进行hash值的转变。切换页面的过程是在点击Link标签或者后退前进按钮时，会先发生url地址的转变，Router监听到地址的改变根据Route的path属性匹配到对应的组件，将state值改成对应的组件并调用setState触发render函数重新渲染dom。
+
+当页面比较多时，项目就会变得越来越大，尤其对于单页面应用来说，初次渲染的速度就会很慢，这时候就需要按需加载，只有切换到页面的时候才去加载对应的js文件。react配合webpack进行按需加载的方法很简单，Route的component改为getComponent，组件用require.ensure的方式获取，并在webpack中配置chunkFilename。
+
+```javascript
+const chooseProducts = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/chooseProducts').default)
+    },'chooseProducts')
+}
+
+const helpCenter = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/helpCenter').default)
+    },'helpCenter')
+}
+
+const saleRecord = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../Component/saleRecord').default)
+    },'saleRecord')
+}
+
+const RouteConfig = (
+    <Router history={history}>
+        <Route path="/" component={Roots}>
+            <IndexRoute component={index} />//首页
+            <Route path="index" component={index} />
+            <Route path="helpCenter" getComponent={helpCenter} />//帮助中心
+            <Route path="saleRecord" getComponent={saleRecord} />//销售记录
+            <Redirect from='*' to='/'  />
+        </Route>
+    </Router>
+);
+```
 
 ### react-router-redux
 
@@ -170,11 +190,172 @@ this.props.clearPointData();
 
 ### react-router-dom
 
+...
+
+## redux
+
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421b103ce703b1?w=533&h=300&f=jpeg&s=16012)
+
+### 组件间的通信
+
+react推崇的是单向数据流，自上而下进行数据的传递，但是由下而上或者不在一条数据流上的组件之间的通信就会变的复杂。解决通信问题的方法很多，如果只是父子级关系，父级可以将一个回调函数当作属性传递给子级，子级可以直接调用函数从而和父级通信。
+
+组件层级嵌套到比较深，可以使用上下文getChildContext来传递信息，这样在不需要将函数一层层往下传，任何一层的子级都可以通过this.context直接访问。
+
+兄弟关系的组件之间无法直接通信，它们只能利用同一层的上级作为中转站。而如果兄弟组件都是最高层的组件，为了能够让它们进行通信，必须在它们外层再套一层组件，这个外层的组件起着保存数据，传递信息的作用，这其实就是redux所做的事情。
+
+组件之间的信息还可以通过全局事件来传递。不同页面可以通过参数传递数据，下个页面可以用location.param来获取。其实react本身很简单，难的在于如何优雅高效的实现组件之间数据的交流。
+
+### redux
+
+首先，redux并不是必须的，它的作用相当于在顶层组件之上又加了一个组件，作用是进行逻辑运算、储存数据和实现组件尤其是顶层组件的通信。如果组件之间的交流不多，逻辑不复杂，只是单纯的进行视图的渲染，这时候用回调，context就行，没必要用redux，用了反而影响开发速度。但是如果组件交流特别频繁，逻辑很复杂，那redux的优势就特别明显了。我第一次做react项目的时候并没有用redux，所有的逻辑都是在组件内部实现，当时为了实现一个逻辑比较复杂的购物车，洋洋洒洒居然写了800多行代码，回头一看我自己都不知道写的是啥，画面太感人。
+
+先简单说一下redux和react是怎么配合的。react-redux提供了connect和Provider两个好基友，它们一个将组件与redux关联起来，一个将store传给组件。组件通过dispatch发出action，store根据action的type属性调用对应的reducer并传入state和这个action，reducer对state进行处理并返回一个新的state放入store，connect监听到store发生变化，调用setState更新组件，此时组件的props也就跟着变化。
+
+**流程是这个样子的：** ![](https://user-gold-cdn.xitu.io/2018/6/9/163e36af6c7ac9de?w=638&h=479&f=jpeg&s=21322)
+
+值得注意的是connect，Provider，mapStateToProps,mapDispatchToProps是react-redux提供的，redux本身和react没有半毛钱关系，它只是数据处理中心，没有和react产生任何耦合，是react-redux让它们联系在一起。
+
+**接下来具体分析一下，redux以及react-redux到底是怎么实现的。**
+
+**先上一张图**
+
+![](https://user-gold-cdn.xitu.io/2018/6/9/163e3c5b4062dfd5?w=1286&h=1246&f=png&s=172994)
+
+明显比第一张要复杂，其实两张图说的是同一件事。从上而下慢慢分析：
+
+**先说说redux**：
+
+**redux主要由三部分组成：store，reducer，action。**
+
+store是一个对象，它有四个主要的方法：
+
+**1、dispatch:**
+
+> 用于action的分发----在createStore中可以用middleware中间件对dispatch进行改造，比如当action传入dispatch会立即触发reducer，有些时候我们不希望它立即触发，而是等待异步操作完成之后再触发，这时候用redux-thunk对dispatch进行改造，以前只能传入一个对象，改造完成后可以传入一个函数，在这个函数里我们手动dispatch一个action对象，这个过程是可控的，就实现了异步。
+
+**2、subscribe：**
+
+> 监听state的变化----这个函数在store调用dispatch时会注册一个listener监听state变化，当我们需要知道state是否变化时可以调用，它返回一个函数，调用这个返回的函数可以注销监听。 let unsubscribe = store.subscribe(() => {console.log('state发生了变化')})
+
+**3、getState：**
+
+> 获取store中的state----当我们用action触发reducer改变了state时，需要再拿到新的state里的数据，毕竟数据才是我们想要的。getState主要在两个地方需要用到，一是在dispatch拿到action后store需要用它来获取state里的数据，并把这个数据传给reducer，这个过程是自动执行的，二是在我们利用subscribe监听到state发生变化后调用它来获取新的state数据，如果做到这一步，说明我们已经成功了。
+
+**4、replaceReducer:**
+
+> 替换reducer，改变state修改的逻辑。
+
+**action:**
+
+> action是一个对象，其中type属性是必须的，同时可以传入一些数据。action可以用actionCreactor进行创造。dispatch就是把action对象发送出去。
+
+**reducer:**
+
+> reducer是一个函数，它接受一个state和一个action，根据action的type返回一个新的state。根据业务逻辑可以分为很多个reducer，然后通过combineReducers将它们合并，state树中有很多对象，每个state对象对应一个reducer，state对象的名字可以在合并时定义。
+
+像这个样子：
+
+```javascript
+const reducer = combineReducers({
+     a: doSomethingWithA,
+     b: processB,
+     c: c
+})
+```
+
+**combineReducers:**
+
+> 其实它也是一个reducer，它接受整个state和一个action，然后将整个state拆分发送给对应的reducer进行处理，所有的reducer会收到相同的action，不过它们会根据action的type进行判断，有这个type就进行处理然后返回新的state，没有就返回默认值，然后这些分散的state又会整合在一起返回一个新的state树。
+
+接下来分析一下整体的流程，首先调用store.dispatch将action作为参数传入，同时用getState获取当前的状态树state并注册subscribe的listener监听state变化，再调用combineReducers并将获取的state和action传入。combineReducers会将传入的state和action传给所有reducer，并根据action的type返回新的state，触发state树的更新，我们调用subscribe监听到state发生变化后用getState获取新的state数据。
+
+redux的state和react的state两者完全没有关系，除了名字一样。
+
+**上面分析了redux的主要功能，那么react-redux到底做了什么？**
+
+### react-redux
+
+如果只使用redux，那么流程是这样的：
+
+> component --> dispatch(action) --> reducer --> subscribe --> getState --> component
+
+用了react-redux之后流程是这样的：
+
+> component --> actionCreator(data) --> reducer --> component
+
+store的三大功能：dispatch，subscribe，getState都不需要手动来写了。react-redux帮我们做了这些，同时它提供了两个好基友Provider和connect。
+
+**Provider**是一个组件，它接受store作为props，然后通过context往下传，这样react中任何组件都可以通过context获取store。也就意味着我们可以在任何一个组件里利用dispatch(action)来触发reducer改变state，并用subscribe监听state的变化，然后用getState获取变化后的值。但是并不推荐这样做，它会让数据流变的混乱，过度的耦合也会影响组件的复用，维护起来也更麻烦。
+
+**connect --connect(mapStateToProps, mapDispatchToProps, mergeProps, options)** 是一个函数，它接受四个参数并且再返回一个函数--wrapWithConnect，wrapWithConnect接受一个组件作为参数wrapWithConnect(component)，它内部定义一个新组件Connect(容器组件)并将传入的组件(ui组件)作为Connect的子组件然后return出去。
+
+所以它的完整写法是这样的：connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(component)
+
+**mapStateToProps(state, [ownProps])：**
+
+> mapStateToProps 接受两个参数，store的state和自定义的props，并返回一个新的对象，这个对象会作为props的一部分传入ui组件。我们可以根据组件所需要的数据自定义返回一个对象。ownProps的变化也会触发mapStateToProps
+
+```javascript
+function mapStateToProps(state) {
+   return { todos: state.todos };
+}
+```
+
+**mapDispatchToProps(dispatch, [ownProps])：**
+
+> mapDispatchToProps如果是对象，那么会和store绑定作为props的一部分传入ui组件。如果是个函数，它接受两个参数，bindActionCreators会将action和dispatch绑定并返回一个对象，这个对象会和ownProps一起作为props的一部分传入ui组件。所以不论mapDispatchToProps是对象还是函数，它最终都会返回一个对象，如果是函数，这个对象的key值是可以自定义的
+
+```javascript
+function mapDispatchToProps(dispatch) {
+   return {
+      todoActions: bindActionCreators(todoActionCreators, dispatch),
+      counterActions: bindActionCreators(counterActionCreators, dispatch)
+   };
+}
+```
+
+mapDispatchToProps返回的对象其属性其实就是一个个actionCreator，因为已经和dispatch绑定，所以当调用actionCreator时会立即发送action，而不用手动dispatch。ownProps的变化也会触发mapDispatchToProps。
+
+**mergeProps(stateProps, dispatchProps, ownProps)：**
+
+> 将mapStateToProps() 与 mapDispatchToProps()返回的对象和组件自身的props合并成新的props并传入组件。默认返回 Object.assign({}, ownProps, stateProps, dispatchProps) 的结果。
+
+**options：**
+
+> pure = true 表示Connect容器组件将在shouldComponentUpdate中对store的state和ownProps进行浅对比，判断是否发生变化，优化性能。为false则不对比。
+
+其实connect函数并没有做什么，大部分的逻辑都是在它返回的wrapWithConnect函数内实现的，确切的说是在wrapWithConnect内定义的Connect组件里实现的。
+
+### 下面是一个完整的 react --> redux --> react 流程：
+
+一、Provider组件接受redux的store作为props，然后通过context往下传。
+
+二、connect函数在初始化的时候会将mapDispatchToProps对象绑定到store，如果mapDispatchToProps是函数则在Connect组件获得store后，根据传入的store.dispatch和action通过bindActionCreators进行绑定，再将返回的对象绑定到store，connect函数会返回一个wrapWithConnect函数，同时wrapWithConnect会被调用且传入一个ui组件，wrapWithConnect内部使用class Connect extends Component定义了一个Connect组件，传入的ui组件就是Connect的子组件，然后Connect组件会通过context获得store，并通过store.getState获得完整的state对象，将state传入mapStateToProps返回stateProps对象、mapDispatchToProps对象或mapDispatchToProps函数会返回一个dispatchProps对象，stateProps、dispatchProps以及Connect组件的props三者通过Object.assign()，或者mergeProps合并为props传入ui组件。然后在ComponentDidMount中调用store.subscribe，注册了一个回调函数handleChange监听state的变化。
+
+三、此时ui组件就可以在props中找到actionCreator，当我们调用actionCreator时会自动调用dispatch，在dispatch中会调用getState获取整个state，同时注册一个listener监听state的变化，store将获得的state和action传给combineReducers，combineReducers会将state依据state的key值分别传给子reducer，并将action传给全部子reducer，reducer会被依次执行进行action.type的判断，如果有则返回一个新的state，如果没有则返回默认。combineReducers再次将子reducer返回的单个state进行合并成一个新的完整的state。此时state发生了变化。dispatch在state返回新的值之后会调用所有注册的listener函数其中包括handleChange函数，handleChange函数内部首先调用getState获取新的state值并对新旧两个state进行浅对比，如果相同直接return，如果不同则调用mapStateToProps获取stateProps并将新旧两个stateProps进行浅对比，如果相同，直接return结束，不进行后续操作。如果不相同则调用this.setState()触发Connect组件的更新，传入ui组件，触发ui组件的更新，此时ui组件获得新的props，react --> redux --> react 的一次流程结束。
+
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421b5d9867c047?w=800&h=411&f=jpeg&s=29925) **上面的有点复杂，简化版的流程是：**
+
+一、Provider组件接受redux的store作为props，然后通过context往下传。
+
+二、connect函数收到Provider传出的store，然后接受三个参数mapStateToProps，mapDispatchToProps和组件，并将state和actionCreator以props传入组件，这时组件就可以调用actionCreator函数来触发reducer函数返回新的state，connect监听到state变化调用setState更新组件并将新的state传入组件。
+
+connect可以写的非常简洁，mapStateToProps，mapDispatchToProps只不过是传入的回调函数，connect函数在必要的时候会调用它们，名字不是固定的，甚至可以不写名字。
+
+简化版本：
+
+```javascript
+connect(state => state, action)(Component);
+```
+
 ## redux-saga
+
+> 有待更新。。。
 
 ## reselect
 
-在React中最昂贵的操作就是渲染回路.当组件检测到输入的变化,渲染回路就会被触发(译注：这里的意思的组件的action会改变redux的state,变回最终又回到组件了).
+![](https://user-gold-cdn.xitu.io/2018/6/21/1642217840dc3151?w=674&h=300&f=jpeg&s=13075) 在React中最昂贵的操作就是渲染回路.当组件检测到输入的变化,渲染回路就会被触发(译注：这里的意思的组件的action会改变redux的state,变回最终又回到组件了).
 
 当我们初次开始React程序的时候,我们不会担心渲染回路的花销问题.但是当我们的UI变得复杂的时候,我们需要考虑这一点.React提供了一些工具让我们能劫持渲染回路,如果渲染看上去不必要,我们就可以使用工具来阻止重渲染的发生.为了这么做,我们要敲入componentShouldUpdate生命周期事件,返回一个布尔值,通知组件是否应该进行更新.这是以PureRenderMixin作为基础,它比较输入的props和state和先前的props和state,如果两者相等就返回false.
 
@@ -196,11 +377,21 @@ Reselect这个中间件要解决的问题是:`在组件交互操作的时候,sta
 
 ## ES6
 
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421be3543bd0c8?w=812&h=408&f=jpeg&s=37712) 在react工程当中，ES6/7/8到处可见，所以ES6也必须要掌握，因为内容太多就简单总结下常用的一些技巧。具体的可参考[阮一峰老师的ES6入门](http://es6.ruanyifeng.com/)。
+
+其实ES6相对于ES5来说，新增了很多的东西，列举些常用的：使用let const完全抛弃var；模板的导入导出(import,export)；字符串的扩展(``,${});对象的扩展(结构赋值，新增了一些api如assgin(),keys(),is()等；数组的扩展(结构赋值,from(),of(),findIndex(),find()等);函数的扩展（函数参数可以设置默认值，箭头函数，没有arguments对象等）；常用来遍历的(for of,forEach,for in,map等)；用于解决异步的(generator函数，promise，async/await函数等)；class和extends关键字等
+
+> 虽然很多ES6的技巧用ES5同样能实现，但是ES6大大提高了开发效率，代码也更加优雅，况且各类的打包工具都可以将ES6转化成适配低浏览器的ES5，所以推荐大家使用。
+
 ## webpack
+
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421b4b769edafd?w=623&h=300&f=jpeg&s=20171)
 
 [参考webpack官网](https://doc.webpack-china.org/concepts/loaders/#-loader)
 
 ## Sass or Less
+
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421b52f551a013?w=448&h=238&f=jpeg&s=15640)
 
 随着前端的不断发展，网站的页面复杂度也在不断提升，原生 CSS 已经让开发者力不从心，预处理器赋予我们的 "超能力"。[浅谈 CSS 预处理器：为什么要使用预处理器？](https://mp.weixin.qq.com/s?__biz=MzIyMjE0ODQ0OQ==&mid=2651552806&idx=1&sn=7c88a87aa57ca2e14c82df7bb806a378)
 
@@ -211,3 +402,116 @@ Reselect这个中间件要解决的问题是:`在组件交互操作的时候,sta
 ### Less
 
 [参考Less语法](https://www.w3cschool.cn/less/)
+
+![](https://user-gold-cdn.xitu.io/2018/6/21/16421bb00b0669d3?w=1080&h=810&f=jpeg&s=19057)
+
+## React Prepare
+
+最后附上react技术栈的相关链接，希望对大家有帮助！
+
+**react**
+
+React 入门实例教程
+
+- <http://www.ruanyifeng.com/blog/2015/03/react.html>
+
+React 技术栈系列教程
+
+- <http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html>
+
+**react 组件**
+
+React创建组件的三种方式及其区别
+
+- <https://www.cnblogs.com/wonyun/p/5930333.html>
+
+从性能角度看react组件拆分的重要性
+
+- <https://www.cnblogs.com/libin-1/p/6810694.html>
+
+**react 性能篇**
+
+React性能优化总结
+
+- <https://segmentfault.com/a/1190000007811296>
+
+现代 Web 开发--React 篇
+
+- <https://github.com/wxyyxc1992/Web-Series/tree/master/React>
+
+React.js 初学者应该知道的9件事
+
+- <http://www.iteye.com/news/31748>
+
+**react router**
+
+React Router 使用教程
+
+- <http://www.ruanyifeng.com/blog/2016/05/react_router.html>
+
+**redux**
+
+Redux 入门教程（一）：基本用法
+
+- <http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html>
+
+Redux 入门教程（二）：中间件与异步操作
+
+- <http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html>
+
+Redux 入门教程（三）：React-Redux 的用法
+
+- <http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html>
+
+Redux 中文文档
+
+- <http://www.redux.org.cn/>
+
+Redux 英文文档
+
+- <https://redux.js.org/>
+
+Redux 核心概念
+
+- <https://www.jianshu.com/p/3334467e4b32>
+
+React 实践心得：react-redux 之 connect 方法详解
+
+- <https://yq.aliyun.com/articles/59428>
+
+**redux-saga/redux-thunk**
+
+saga 中文文档
+
+- <https://redux-saga-in-chinese.js.org/docs/api/index.html>
+
+聊一聊 redux 异步流之 redux-saga
+
+- <https://www.jianshu.com/p/e84493c7af35>
+
+Redux-Saga 实用指北
+
+- <https://juejin.im/post/5ad83a70f265da503825b2b4>
+
+**Reselect**
+
+- <https://www.jianshu.com/p/6e38c66366cd>
+- [http://baijiahao.baidu.com/s?id=1561953979797569픴=spider&for=pc](http://baijiahao.baidu.com/s?id=1561953979797569&wfr=spider&for=pc)
+
+**Others**
+
+Flux 架构入门教程
+
+- <http://www.ruanyifeng.com/blog/2016/01/flux.html>
+
+Immutable
+
+- <https://segmentfault.com/a/1190000003910357>
+
+dom diff
+
+- <https://calendar.perfplanet.com/2013/diff/>
+
+Generator 函数的含义与用法
+
+- <http://www.ruanyifeng.com/blog/2015/04/generator.html>
